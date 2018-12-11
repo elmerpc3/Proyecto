@@ -1,0 +1,14 @@
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\bin\Debug\Proyecto.exe.config
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\bin\Debug\Proyecto.exe
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\bin\Debug\Proyecto.pdb
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\obj\Debug\Proyecto.csprojAssemblyReference.cache
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\obj\Debug\Proyecto.Properties.Resources.resources
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\obj\Debug\Proyecto.csproj.GenerateResource.cache
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\obj\Debug\Proyecto.csproj.CoreCompileInputs.cache
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\obj\Debug\Proyecto.exe
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\obj\Debug\Proyecto.pdb
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\obj\Debug\Proyecto.Form1.resources
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\bin\Debug\Newtonsoft.Json.dll
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\bin\Debug\Newtonsoft.Json.pdb
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\bin\Debug\Newtonsoft.Json.xml
+D:\Downloads\school\Lidia\Final\Proyecto\Proyecto\obj\Debug\Proyecto.csproj.CopyComplete
