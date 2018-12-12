@@ -143,14 +143,16 @@ namespace Proyecto
 
         private void button5_Click(object sender, EventArgs e)
         {
+            logger.Log("Route Simulation started");
             float aux = stores[0].GetTotal();
-            List<Store> newlist = stores.OrderBy(o=>o.GetTotal()).ToList();
+            List<Store> newlist = stores.OrderByDescending(o=>o.GetTotal()).ToList();
             StoresListBox.DataSource = newlist;
+            logger.Log("Route Simulation finished");
         }
 
         private void SimulButton_Click(object sender, EventArgs e)
         {
-            logger.Log("Simulation started");
+            logger.Log("Truck Simulation started");
             int totalveg = 0;
             int totalsoda = 0;
             int totalbread = 0;
@@ -194,7 +196,7 @@ namespace Proyecto
             }
 
             ResultLabel.Text = text;
-            logger.Log("Simulation finished");
+            logger.Log("Truck Simulation finished");
         }
 
         private void ResultLabel_Click(object sender, EventArgs e)
