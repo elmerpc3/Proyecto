@@ -17,11 +17,18 @@ namespace Proyecto
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            List<Store> stores = QrApi.GetStores();
+            
+
+            List<Store> stores3 = QrApi.GetStores();
 
             //List<String> stores = QrApi.GetFilesFrom();
+            //List<Store> stores1 = new List<Store>();
+            //foreach(String i in stores)
+            //{
+            //    stores1.Add(new Store(i));
+            //}
 
-            Application.Run(new Form1(stores));
+            Application.Run(new Form1(stores3));
         }
     }
 }

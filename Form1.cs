@@ -15,6 +15,7 @@ namespace Proyecto
         Logger logger;
         List<LogMessage> gridlist;
         List<Store> stores;
+        int maxbread, maxveg, maxsoda;
         public Form1(List<Store> stores)  
             {
             InitializeComponent();
@@ -25,6 +26,9 @@ namespace Proyecto
             LoggerGrid.DataSource = gridlist;
             this.stores = stores;
             StoresListBox.DataSource = stores;
+            this.maxveg = 0;
+            this.maxbread = 0;
+            this.maxsoda = 0;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -56,7 +60,6 @@ namespace Proyecto
         private void GridLogButton_Click(object sender, EventArgs e)
         {
             logger.Add("Grid");
-            logger.Log("Testing hola");
             UpdateLogs();
         }
 
@@ -85,6 +88,118 @@ namespace Proyecto
         {
             logger.Remove(LoggerListBox.SelectedIndex);
             UpdateLogs();
+        }
+
+        private void StoresListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Store aux = stores[StoresListBox.SelectedIndex];
+            textBox1.Text = (aux.products[0].quantity).ToString();
+            textBox2.Text = (aux.products[1].quantity).ToString();
+            textBox3.Text = (aux.products[2].quantity).ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string test = Testingbox.Text;
+            QrApi.CreateImage(test, "Testing2");
+        }
+
+        private void StoresButton1_Click(object sender, EventArgs e)
+        {
+            Store aux = stores[StoresListBox.SelectedIndex];
+            aux.products[0].quantity = Int32.Parse(textBox1.Text);
+            aux.products[1].quantity = Int32.Parse(textBox2.Text);
+            aux.products[2].quantity = Int32.Parse(textBox3.Text);
+            aux.GenerateImage();
+            logger.Log("Imagen generada de nuevo pedido de tienda " + aux.storeName);
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            maxveg = Decimal.ToInt32(numericUpDown1.Value * 95);
+            label14.Text = (maxveg).ToString() + " vegetable bags.";
+            logger.Log("Delivery trucks modified");
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            maxbread = Decimal.ToInt32(numericUpDown2.Value * 270);
+            label15.Text = (maxbread).ToString() + " bread pieces.";
+            logger.Log("Delivery trucks modified");
+        }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            maxsoda = Decimal.ToInt32(numericUpDown3.Value * 120);
+            label16.Text = (maxsoda).ToString() + " sodas.";
+            logger.Log("Delivery trucks modified");
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            float aux = stores[0].GetTotal();
+            List<Store> newlist = stores.OrderBy(o=>o.GetTotal()).ToList();
+            StoresListBox.DataSource = newlist;
+        }
+
+        private void SimulButton_Click(object sender, EventArgs e)
+        {
+            logger.Log("Simulation started");
+            int totalveg = 0;
+            int totalsoda = 0;
+            int totalbread = 0;
+            string text = "";
+            int leftovers = 0;
+            int total;
+            int max = maxbread + maxveg + maxsoda;
+            foreach(Store i in stores)
+            {
+                totalveg += i.products[0].quantity;
+                totalbread += i.products[1].quantity;
+                totalsoda += i.products[2].quantity;
+            }
+            total =totalveg + totalbread + totalsoda;
+
+            if((numericUpDown1.Value + numericUpDown2.Value + numericUpDown3.Value) > 5)
+            {
+                text += "    Max truck limit excedeed.";
+            }
+            if(totalveg < maxveg)
+            {
+                if(totalbread < maxbread)
+                {
+                    if(totalsoda < maxsoda)
+                    {
+                        text += "Enough products available " + (max - total) + " products left over";
+                    }
+                    else
+                    {
+                        text += "  Not enough soda available.";
+                    }
+                }
+                else
+                {
+                    text += "   Not enough bread available";
+                }
+            }
+            else
+            {
+                text += "   Not enough vegetables available. ";
+            }
+
+            ResultLabel.Text = text;
+            logger.Log("Simulation finished");
+        }
+
+        private void ResultLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
