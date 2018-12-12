@@ -12,7 +12,7 @@ namespace Proyecto
         public int idStore { get; set; }
         public string storeName { get; set; }
         public Product[] products { get; set; }    //0 = veg, 1 = brea, 2 = soda
-        private Product[] empty = { new Product("Vegetable", 5, 0, 0), new Product("Bread", 10, 0, 0), new Product("Soda", 15, 0, 0) };
+        private Product[] empty = { new Product("Vegetable", 0, 0, 0), new Product("Bread", 0, 0, 0), new Product("Soda", 0, 0, 0) };
         
         public Store()
         {
